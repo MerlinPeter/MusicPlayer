@@ -12,6 +12,7 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var cell_label: UILabel!
     
  
+    @IBOutlet weak var music_player_image: UIImageView!
 }
 
 
