@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  MusicPlayer
 //
-//  Created by Peter Joseph Karunanidhi on 5/6/17.
+//  Created by MA on 5/6/17.
 //  Copyright © 2017 M A. All rights reserved.
 //
 
