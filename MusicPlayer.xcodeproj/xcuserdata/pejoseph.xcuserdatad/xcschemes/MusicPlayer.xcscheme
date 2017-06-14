@@ -71,12 +71,13 @@
             ReferencedContainer = "container:MusicPlayer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-         <AdditionalOption
-            key = "DYLD_INSERT_LIBRARIES"
-            value = "/usr/lib/libgmalloc.dylib"
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-FIRAnalyticsDebugEnabled"
             isEnabled = "YES">
-         </AdditionalOption>
+         </CommandLineArgument>
+      </CommandLineArguments>
+      <AdditionalOptions>
          <AdditionalOption
             key = "NSZombieEnabled"
             value = "YES"

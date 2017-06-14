@@ -11,13 +11,10 @@ import FirebaseDatabase
 import Firebase
 import FirebaseStorage
 import AVFoundation
-//TODO: animation while song is playing
-//
+ 
 
-
-class MusicListController: UITableViewController ,AVAudioPlayerDelegate{
-    var ref: FIRDatabaseReference!
-    let storage = FIRStorage.storage()
+class MusicListController:  UITableViewController ,AVAudioPlayerDelegate{
+     let storage = Storage.storage()
     var audioPlayer : AVAudioPlayer!
     var updater : CADisplayLink! = nil
     var play_button :UIBarButtonItem!
@@ -42,8 +39,7 @@ class MusicListController: UITableViewController ,AVAudioPlayerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = FIRDatabase.database().reference()
-
+ 
 
         play_button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.play, target: self, action: #selector(self.playButton(sender:)))
         play_button.tintColor = UIColor.white
@@ -56,26 +52,26 @@ class MusicListController: UITableViewController ,AVAudioPlayerDelegate{
 
  
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
-         ref.child(userID!).observe( .value, with: { (snapshot) in
-            // Get user value
-            var fireitems: [Media] = []
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                let dvalue = rest.value as? NSDictionary
-                let medianame:String! = dvalue!.value(forKey: "name") as? String
-                let medialocation:String! = dvalue!.value(forKey: "location") as? String // TODO: - Need to review
-                let mediafilename:String! = dvalue!.value(forKey: "file") as? String
-                 fireitems.append(Media(title: medianame, location: medialocation, filename: mediafilename))
+  
+            
+ 
+        _   = MediaDataHelper.query_all(  completion: { (media_array : [Media]) in
+            
+            
+            if media_array.count  > 0 {
+                
+                self.music_list = media_array
+                self.tableView.reloadData()
                 
             }
-                        self.music_list = fireitems
-                        self.tableView.reloadData()
-  
+            
+            
+        })
+            
 
-         }) { (error) in
-            print(error.localizedDescription)
-        }
         
+        
+
         
     }
     
@@ -159,6 +155,7 @@ class MusicListController: UITableViewController ,AVAudioPlayerDelegate{
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
+        audioPlayer.stop()
         let cell = tableView.cellForRow(at: indexPath) as! ItemCell
         cell.music_player_image.alpha = 0
         cell.cell_label.textColor = UIColor.white
@@ -173,7 +170,7 @@ class MusicListController: UITableViewController ,AVAudioPlayerDelegate{
         
         do {
             try
-                FIRAuth.auth()!.signOut()
+                Auth.auth().signOut()
             dismiss(animated: true, completion: nil)
         } catch {
             
@@ -181,7 +178,28 @@ class MusicListController: UITableViewController ,AVAudioPlayerDelegate{
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            let mediaItem: Media = music_list[indexPath.row]
+               _   = MediaDataHelper.delete_row(record: mediaItem, completion: { (error) in
+                
+                
+                if error  !=  nil {
+                    
+                    print("Row Deleted")
+                    
+                }else{
+                    
+                    print(error?.localizedDescription)
+                }
+                
+                
+            })
+
+        }
+    }
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let music_player_vc = segue.destination as! MusicPlayerController
         
         music_player_vc.audio_record = sender as? Media
@@ -213,34 +231,20 @@ class MusicListController: UITableViewController ,AVAudioPlayerDelegate{
     
     
     func update_progress(){
-       // simple slide working code : 	var progress = audioPlayer.currentTime / audioPlayer.duration
-       // progress_view.setValue(Float(progress), animated: false)
-
-         //seek code
+ 
            progress_view.setValue(Float(audioPlayer.currentTime), animated: false)
 
-            // Update progress
-    
-                song_time_pending.text = seconds2Timestamp(intSeconds: Int((audioPlayer.duration - audioPlayer.currentTime)))
-       
-     
+           song_time_pending.text = CommonHelper.seconds2Timestamp(intSeconds: Int((audioPlayer.duration - audioPlayer.currentTime)))
+      
     }
-    func seconds2Timestamp(intSeconds:Int)->String {
-        
-        let mins:Int = intSeconds/60
-        let hours:Int = mins/60
-        let secs:Int = intSeconds%60
-        
-        let strTimestamp:String = ((hours<10) ? "0" : "") + String(hours) + ":" + ((mins<10) ? "0" : "") + String(mins) + ":" + ((secs<10) ? "0" : "") + String(secs)
-        return strTimestamp
-    }
+
     
     func streamsong(file:String){
         
         let storagePath = "gs://sound-demo-b3241.appspot.com/"+file
         let spaceRef = storage.reference(forURL: storagePath)
 
-        spaceRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+        spaceRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
             if (error != nil) {
                 print("download err")
             } else {
@@ -256,11 +260,7 @@ class MusicListController: UITableViewController ,AVAudioPlayerDelegate{
                     self.progress_view.value = 0.0
                     Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.update_progress), userInfo: nil, repeats: true)
  
-                     //self.updater = CADisplayLink(target: self, selector: #selector(MusicListController.update_progress))
-                    //self.updater.preferredFramesPerSecond = 1
-                    //self.updater.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
-                    
-                } catch {
+                 } catch {
                     print(" play err")
                 }
             }
@@ -270,13 +270,11 @@ class MusicListController: UITableViewController ,AVAudioPlayerDelegate{
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        
         if let cell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow! ) as? ItemCell{
             
             cell.music_player_image.layer.removeAllAnimations()
-            
-            print("Sound Ended")
-            
-            
+             
         }
 
     }

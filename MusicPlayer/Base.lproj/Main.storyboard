@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -119,14 +119,15 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--My Tab Controller-->
         <scene sceneID="jHT-h3-A79">
             <objects>
-                <tabBarController id="4Il-GT-RDd" sceneMemberID="viewController">
+                <tabBarController id="4Il-GT-RDd" customClass="myTabController" customModule="MusicPlayer" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="l5t-oR-ysr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.28498721119999998" green="0.32504147290000002" blue="0.35841977600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="4DG-OP-wIh" kind="relationship" relationship="viewControllers" id="xJ8-RJ-Ehg"/>
@@ -181,7 +182,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QNe-Mq-6oa" id="fo9-8R-veB">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rO-3T-S7x">
@@ -225,7 +226,13 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="4pO-8y-6qU"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Music Player" id="E0i-La-KXu"/>
+                    <navigationItem key="navigationItem" title="Music Player" id="E0i-La-KXu">
+                        <barButtonItem key="leftBarButtonItem" title="logout" id="Bdg-4e-FGF">
+                            <connections>
+                                <action selector="signoutButtonPressed:" destination="AUr-aw-Wv6" id="l62-gk-aX8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="navigation_bar" destination="E0i-La-KXu" id="oyg-DV-Tma"/>
@@ -298,20 +305,156 @@
                     <view key="view" contentMode="scaleToFill" id="86B-Vd-8qS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPB-D2-BYr">
+                                <rect key="frame" x="131" y="494" width="112" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="finish_audio:" destination="Orn-RM-3Q3" eventType="touchUpInside" id="yOm-k9-Az7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQ7-ZV-Tzu">
+                                <rect key="frame" x="88" y="234" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Crq-UA-9hX"/>
+                                    <constraint firstAttribute="height" constant="200" id="bWU-AZ-ucV"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Mic_ballone_large"/>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OMi-Hv-Ib0">
+                                <rect key="frame" x="112" y="161" width="150" height="2"/>
+                                <color key="progressTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="trackTintColor" red="0.28498721119999998" green="0.32504147290000002" blue="0.35841977600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvK-ct-OBJ">
+                                <rect key="frame" x="187" y="146" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3S-W5-jow">
+                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="CxM-Dr-Fii"/>
+                                    <barButtonItem style="plain" id="XXH-jV-mL9">
+                                        <view key="customView" contentMode="scaleToFill" id="AY3-Xl-JfH">
+                                            <rect key="frame" x="16" y="6" width="56" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZv-zD-MJz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="33"/>
+                                                    <color key="backgroundColor" red="0.65850239992141724" green="0.66651934385299683" blue="0.67891699075698853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.28498721119999998" green="0.32504147290000002" blue="0.35841977600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.65850239990000003" green="0.66651934390000001" blue="0.67891699080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="JZv-zD-MJz" firstAttribute="leading" secondItem="AY3-Xl-JfH" secondAttribute="leading" id="9bD-ME-VRq"/>
+                                                <constraint firstItem="JZv-zD-MJz" firstAttribute="top" secondItem="AY3-Xl-JfH" secondAttribute="top" id="Cab-E3-gRJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="JZv-zD-MJz" secondAttribute="bottom" id="NHS-ol-ZkP"/>
+                                                <constraint firstAttribute="trailing" secondItem="JZv-zD-MJz" secondAttribute="trailing" id="bbp-6z-ahH"/>
+                                            </constraints>
+                                        </view>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="Zbe-Ea-Tcg">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="O5F-WV-FHI">
+                                            <rect key="frame" x="82" y="16" width="148" height="13"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="thumbTintColor" red="0.28498721119999998" green="0.32504147290000002" blue="0.35841977600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </slider>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="play" id="E96-d4-nyO">
+                                        <color key="tintColor" red="0.28498721119999998" green="0.32504147290000002" blue="0.35841977600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="tool_play_pressed:" destination="Orn-RM-3Q3" id="atK-n3-RlJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="pause" id="uCW-kq-Fho">
+                                        <color key="tintColor" red="0.28498721119999998" green="0.32504147290000002" blue="0.35841977600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="tool_pauseb_pressed:" destination="Orn-RM-3Q3" id="qPO-a5-zn8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="trash" id="uHg-LU-yKK">
+                                        <color key="tintColor" red="0.28498721119999998" green="0.32504147290000002" blue="0.35841977600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="discard_recordingb:" destination="Orn-RM-3Q3" id="mZD-bV-Rlt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="save" id="LUr-q0-e2x">
+                                        <color key="tintColor" red="0.28498721119999998" green="0.32504147290000002" blue="0.35841977600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="save_recordingb:" destination="Orn-RM-3Q3" id="lQO-hC-c5Z"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jwg-6F-Ivb"/>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Prayer name  and tap the mic to record." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-bx-WZi">
+                                <rect key="frame" x="26" y="45" width="323" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Rf-Co-bAF">
+                                <rect key="frame" x="62.5" y="133" width="250" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="mNb-RV-CA4"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.28498721119999998" green="0.32504147290000002" blue="0.35841977600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yQ7-ZV-Tzu" firstAttribute="top" secondItem="OMi-Hv-Ib0" secondAttribute="bottom" constant="70.5" id="3qU-0L-2QN"/>
+                            <constraint firstItem="QvK-ct-OBJ" firstAttribute="centerX" secondItem="86B-Vd-8qS" secondAttribute="centerX" id="4JM-Mh-Org"/>
+                            <constraint firstItem="OMi-Hv-Ib0" firstAttribute="leading" secondItem="86B-Vd-8qS" secondAttribute="leadingMargin" constant="10" id="63O-sX-0p1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OMi-Hv-Ib0" secondAttribute="trailing" constant="10" id="6Oc-aH-7ea"/>
+                            <constraint firstAttribute="trailing" secondItem="D3S-W5-jow" secondAttribute="trailing" id="9Qa-HN-H4k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AEM-bx-WZi" secondAttribute="trailing" constant="10" id="BIS-OK-Rww"/>
+                            <constraint firstItem="4Rf-Co-bAF" firstAttribute="top" secondItem="AEM-bx-WZi" secondAttribute="bottom" constant="33" id="Gj7-hR-j2v"/>
+                            <constraint firstItem="fPB-D2-BYr" firstAttribute="centerX" secondItem="86B-Vd-8qS" secondAttribute="centerX" id="IaO-EX-kJA"/>
+                            <constraint firstItem="8Qd-Gx-Zir" firstAttribute="top" secondItem="D3S-W5-jow" secondAttribute="bottom" id="QCp-jp-nfN"/>
+                            <constraint firstItem="yQ7-ZV-Tzu" firstAttribute="centerX" secondItem="86B-Vd-8qS" secondAttribute="centerX" id="Vza-KZ-T5o"/>
+                            <constraint firstItem="OMi-Hv-Ib0" firstAttribute="top" secondItem="QvK-ct-OBJ" secondAttribute="bottom" constant="15" id="dq4-oY-oXT"/>
+                            <constraint firstItem="fPB-D2-BYr" firstAttribute="top" secondItem="yQ7-ZV-Tzu" secondAttribute="bottom" constant="60.5" id="gOa-eg-8Bw"/>
+                            <constraint firstItem="D3S-W5-jow" firstAttribute="leading" secondItem="86B-Vd-8qS" secondAttribute="leading" id="hQx-nq-R0s"/>
+                            <constraint firstItem="AEM-bx-WZi" firstAttribute="leading" secondItem="86B-Vd-8qS" secondAttribute="leadingMargin" constant="10" id="uE0-da-4DY"/>
+                            <constraint firstItem="yQ7-ZV-Tzu" firstAttribute="top" secondItem="4Rf-Co-bAF" secondAttribute="bottom" constant="71" id="ujV-Io-Ico"/>
+                            <constraint firstItem="4Rf-Co-bAF" firstAttribute="centerX" secondItem="86B-Vd-8qS" secondAttribute="centerX" id="uuV-1G-RbL"/>
+                            <constraint firstItem="AEM-bx-WZi" firstAttribute="top" secondItem="ljR-77-J30" secondAttribute="bottom" constant="25" id="v7s-9m-hpj"/>
+                            <constraint firstItem="yQ7-ZV-Tzu" firstAttribute="centerY" secondItem="86B-Vd-8qS" secondAttribute="centerY" id="zmD-jQ-nG4"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Mic_ballonicon2" selectedImage="Mic_ballonicon2" id="ymH-yd-w5O">
+                    <tabBarItem key="tabBarItem" title="" id="ymH-yd-w5O">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="pause_button" destination="uCW-kq-Fho" id="jMS-qs-Aea"/>
+                        <outlet property="play_button" destination="E96-d4-nyO" id="Wcc-oa-hwD"/>
+                        <outlet property="prayer_name" destination="4Rf-Co-bAF" id="BQT-Cu-oaE"/>
+                        <outlet property="progress_bar" destination="OMi-Hv-Ib0" id="oTF-ip-WBA"/>
+                        <outlet property="progress_label" destination="QvK-ct-OBJ" id="Lim-d6-FN6"/>
+                        <outlet property="progress_recorded_audio" destination="O5F-WV-FHI" id="0DP-Yr-EwI"/>
+                        <outlet property="r_progress_label" destination="JZv-zD-MJz" id="zvF-kh-uEl"/>
+                        <outlet property="recordButton" destination="yQ7-ZV-Tzu" id="Kh9-Ar-cnN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hcm-Bi-56m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="721"/>
+            <point key="canvasLocation" x="1488.8" y="720.08995502248877"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Mic_ballonicon2" width="37" height="37"/>
+        <image name="Mic_ballone_large" width="1000" height="1000"/>
         <image name="muiscplayer" width="60" height="60"/>
     </resources>
 </document>

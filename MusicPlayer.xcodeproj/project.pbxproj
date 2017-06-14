@@ -12,6 +12,13 @@
 		7E06F91E1EBEF21000643167 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06F91D1EBEF21000643167 /* LoginController.swift */; };
 		7E06F9231EC0429100643167 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E06F9221EC0429100643167 /* GoogleService-Info.plist */; };
 		7E06F9251EC04B7400643167 /* MusicListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06F9241EC04B7400643167 /* MusicListController.swift */; };
+		7E10AA0B1ED7B99C00EA3628 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E10AA0A1ED7B99C00EA3628 /* UIViewControllerExtension.swift */; };
+		7E10AA0D1EDDE41300EA3628 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E10AA0C1EDDE41300EA3628 /* MediaManager.swift */; };
+		7E10AA0F1EDE5D9100EA3628 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E10AA0E1EDE5D9100EA3628 /* Constants.swift */; };
+		7E10AA121EDE60EB00EA3628 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E10AA111EDE60EB00EA3628 /* DataService.swift */; };
+		7E10AA141EDE642F00EA3628 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E10AA131EDE642F00EA3628 /* DataHelperProtocol.swift */; };
+		7E10AA161EDE668D00EA3628 /* MediaDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E10AA151EDE668D00EA3628 /* MediaDataHelper.swift */; };
+		7E10AA181EDE683200EA3628 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E10AA171EDE683200EA3628 /* Error.swift */; };
 		7E1D92151EBEDC4E00B6233F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1D92141EBEDC4E00B6233F /* AppDelegate.swift */; };
 		7E1D921A1EBEDC4E00B6233F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E1D92181EBEDC4E00B6233F /* Main.storyboard */; };
 		7E1D921C1EBEDC4E00B6233F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E1D921B1EBEDC4E00B6233F /* Assets.xcassets */; };
@@ -21,6 +28,9 @@
 		7E2433F11EC2C19900EEF922 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2433F01EC2C19900EEF922 /* Media.swift */; };
 		7E2433F61EC53C8000EEF922 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2433F51EC53C8000EEF922 /* ItemCell.swift */; };
 		7E2433F81EC5916100EEF922 /* MusicPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2433F71EC5916100EEF922 /* MusicPlayerController.swift */; };
+		7E6C5C131ED4DC79003D9C23 /* music3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7E6C5C121ED4DC79003D9C23 /* music3.mp3 */; };
+		7E6C5C151ED4F447003D9C23 /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6C5C141ED4F447003D9C23 /* CommonHelper.swift */; };
+		7E7B1F1E1ED176A4007FDC67 /* myTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7B1F1D1ED176A4007FDC67 /* myTabController.swift */; };
 		7EE318291ECD7561002B7892 /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE318281ECD7561002B7892 /* RecordController.swift */; };
 		E28A97A2F2A3133698BDCDDF /* Pods_MusicPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CE4AF1CC41C15024116EB4 /* Pods_MusicPlayer.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +53,13 @@
 		7E06F91F1EC0414F00643167 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7E06F9221EC0429100643167 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7E06F9241EC04B7400643167 /* MusicListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicListController.swift; path = Controller/MusicListController.swift; sourceTree = "<group>"; };
+		7E10AA0A1ED7B99C00EA3628 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtension.swift; path = Controller/UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		7E10AA0C1EDDE41300EA3628 /* MediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaManager.swift; path = Model/MediaManager.swift; sourceTree = "<group>"; };
+		7E10AA0E1EDE5D9100EA3628 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7E10AA111EDE60EB00EA3628 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		7E10AA131EDE642F00EA3628 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
+		7E10AA151EDE668D00EA3628 /* MediaDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDataHelper.swift; sourceTree = "<group>"; };
+		7E10AA171EDE683200EA3628 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		7E1D92111EBEDC4E00B6233F /* MusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E1D92141EBEDC4E00B6233F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E1D92191EBEDC4E00B6233F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,6 +73,9 @@
 		7E2433F01EC2C19900EEF922 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Media.swift; path = Model/Media.swift; sourceTree = "<group>"; };
 		7E2433F51EC53C8000EEF922 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = View/ItemCell.swift; sourceTree = "<group>"; };
 		7E2433F71EC5916100EEF922 /* MusicPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicPlayerController.swift; path = Controller/MusicPlayerController.swift; sourceTree = "<group>"; };
+		7E6C5C121ED4DC79003D9C23 /* music3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music3.mp3; sourceTree = "<group>"; };
+		7E6C5C141ED4F447003D9C23 /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
+		7E7B1F1D1ED176A4007FDC67 /* myTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = myTabController.swift; path = Controller/myTabController.swift; sourceTree = "<group>"; };
 		7EE318281ECD7561002B7892 /* RecordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordController.swift; path = Controller/RecordController.swift; sourceTree = "<group>"; };
 		CBF8528DBB50974F98208D5D /* Pods-MusicPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicPlayer/Pods-MusicPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		CFA052CC64AAB3743982D737 /* Pods_MusicPlayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicPlayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +113,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7E10AA101EDE5E0500EA3628 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7E10AA0E1EDE5D9100EA3628 /* Constants.swift */,
+				7E10AA171EDE683200EA3628 /* Error.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		7E1D92081EBEDC4E00B6233F = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +146,7 @@
 		7E1D92131EBEDC4E00B6233F /* MusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				7E6C5C121ED4DC79003D9C23 /* music3.mp3 */,
 				7E1D92261EBEE41400B6233F /* Layout */,
 				7E1D92141EBEDC4E00B6233F /* AppDelegate.swift */,
 				7E1D921B1EBEDC4E00B6233F /* Assets.xcassets */,
@@ -150,7 +180,12 @@
 			isa = PBXGroup;
 			children = (
 				7E1D92351EBEEDE300B6233F /* User.swift */,
+				7E10AA111EDE60EB00EA3628 /* DataService.swift */,
+				7E10AA131EDE642F00EA3628 /* DataHelperProtocol.swift */,
+				7E10AA151EDE668D00EA3628 /* MediaDataHelper.swift */,
+				7E10AA0C1EDDE41300EA3628 /* MediaManager.swift */,
 				7E2433F01EC2C19900EEF922 /* Media.swift */,
+				7E10AA101EDE5E0500EA3628 /* Common */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -160,9 +195,12 @@
 			children = (
 				7E06F91D1EBEF21000643167 /* LoginController.swift */,
 				7E2433F51EC53C8000EEF922 /* ItemCell.swift */,
-				7E06F9241EC04B7400643167 /* MusicListController.swift */,
+				7E7B1F1D1ED176A4007FDC67 /* myTabController.swift */,
 				7E2433F71EC5916100EEF922 /* MusicPlayerController.swift */,
+				7E06F9241EC04B7400643167 /* MusicListController.swift */,
 				7EE318281ECD7561002B7892 /* RecordController.swift */,
+				7E6C5C141ED4F447003D9C23 /* CommonHelper.swift */,
+				7E10AA0A1ED7B99C00EA3628 /* UIViewControllerExtension.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -234,7 +272,7 @@
 				TargetAttributes = {
 					7E1D92101EBEDC4E00B6233F = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = S36L8PTJAV;
+						DevelopmentTeam = 36S8N2H45D;
 						ProvisioningStyle = Automatic;
 					};
 					7E1D922A1EBEECD900B6233F = {
@@ -271,6 +309,7 @@
 				7E1D921F1EBEDC4E00B6233F /* LaunchScreen.storyboard in Resources */,
 				7E06F9231EC0429100643167 /* GoogleService-Info.plist in Resources */,
 				7E1D921C1EBEDC4E00B6233F /* Assets.xcassets in Resources */,
+				7E6C5C131ED4DC79003D9C23 /* music3.mp3 in Resources */,
 				7E1D921A1EBEDC4E00B6233F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,12 +422,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E2433F81EC5916100EEF922 /* MusicPlayerController.swift in Sources */,
+				7E10AA121EDE60EB00EA3628 /* DataService.swift in Sources */,
 				7E2433F11EC2C19900EEF922 /* Media.swift in Sources */,
+				7E6C5C151ED4F447003D9C23 /* CommonHelper.swift in Sources */,
 				7E06F91E1EBEF21000643167 /* LoginController.swift in Sources */,
+				7E10AA0D1EDDE41300EA3628 /* MediaManager.swift in Sources */,
+				7E7B1F1E1ED176A4007FDC67 /* myTabController.swift in Sources */,
 				7E2433F61EC53C8000EEF922 /* ItemCell.swift in Sources */,
+				7E10AA141EDE642F00EA3628 /* DataHelperProtocol.swift in Sources */,
+				7E10AA181EDE683200EA3628 /* Error.swift in Sources */,
+				7E10AA0F1EDE5D9100EA3628 /* Constants.swift in Sources */,
+				7E10AA161EDE668D00EA3628 /* MediaDataHelper.swift in Sources */,
 				7EE318291ECD7561002B7892 /* RecordController.swift in Sources */,
 				7E06F9251EC04B7400643167 /* MusicListController.swift in Sources */,
 				7E1D92151EBEDC4E00B6233F /* AppDelegate.swift in Sources */,
+				7E10AA0B1ED7B99C00EA3628 /* UIViewControllerExtension.swift in Sources */,
 				7E1D92361EBEEDE300B6233F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,7 +576,7 @@
 			baseConfigurationReference = E154E795001B8E0857F9A73B /* Pods-MusicPlayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S36L8PTJAV;
+				DEVELOPMENT_TEAM = 36S8N2H45D;
 				INFOPLIST_FILE = MusicPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -543,7 +591,7 @@
 			baseConfigurationReference = CBF8528DBB50974F98208D5D /* Pods-MusicPlayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S36L8PTJAV;
+				DEVELOPMENT_TEAM = 36S8N2H45D;
 				INFOPLIST_FILE = MusicPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

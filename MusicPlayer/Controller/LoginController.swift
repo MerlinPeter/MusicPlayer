@@ -21,7 +21,7 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+        Auth.auth().addStateDidChangeListener() { auth, user in
             
             if user != nil {
                 self.performSegue(withIdentifier: self.loginToMusicList, sender: nil)
@@ -41,10 +41,10 @@ class LoginController: UIViewController {
                                         let emailField = alert.textFields![0]
                                         let passwordField = alert.textFields![1]
                                         
-                                        FIRAuth.auth()!.createUser(withEmail: emailField.text!,
+                                        Auth.auth().createUser(withEmail: emailField.text!,
                                                                    password: passwordField.text!) { user, error in
                                                                     if error == nil {
-                                                                        FIRAuth.auth()!.signIn(withEmail: emailField.text!,
+                                                                        Auth.auth().signIn(withEmail: emailField.text!,
                                                                                                password: passwordField.text!)
                                                                 
                                                                     
@@ -74,7 +74,7 @@ class LoginController: UIViewController {
   
     @IBAction func loginButtonPressed(_ sender: Any) {
         
-        FIRAuth.auth()?.signIn(withEmail: userNameText.text!, password: userPasswordText.text!) { (user, error) in
+        Auth.auth().signIn(withEmail: userNameText.text!, password: userPasswordText.text!) { (user, error) in
             self.errorLabelText.text = error?.localizedDescription
         }
         

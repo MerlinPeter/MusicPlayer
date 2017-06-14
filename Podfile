@@ -9,6 +9,7 @@ target 'MusicPlayer' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Firebase/Analytics'
   target 'MusicPlayerTests' do
     inherit! :search_paths
     # Pods for testing

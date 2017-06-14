@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:DataService.swift">
+   </FileRef>
+   <FileRef
       location = "group:MusicPlayer.xcodeproj">
    </FileRef>
    <FileRef
